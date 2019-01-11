@@ -2,68 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputManager
 {
-    public class inputManager
-    {
-
-        private bool w = false;
-        private bool a = false;
-        private bool s = false;
-        private bool d = false;
-        private bool space = false;
-        private bool k = false;
-
-        // Use this for initialization
-        void Start()
+       
+        public bool Up
         {
-
+          get
+          {
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)))
+            {
+                return true;
+            }
+            else return false;
+               
+          }
         }
 
-        // Update is called once per frame
-        void Update()
+        public bool Down
         {
-            checkKeycodes();
+           get
+           {
+            if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)))
+            {
+                return true;
+            }
+            else return false;
 
+           }
         }
-
-
-        public bool W
+        public bool Left
         {
-            get { return w; }
-        }
-        public bool A
-        {
-            get { return a; }
-        }
-        public bool S
-        {
-            get { return s; }
-        }
-
-        public bool D
-        {
-            get { return d; }
-        }
-        public bool K
-        {
-            get { return k; }
-        }
-        public bool Space
-        {
-            get { return space; }
+          get
+          {
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)))
+            {
+                return true;
+            }
+            else return false;
+               
+          }
         }
 
-
-        public void checkKeycodes()
+        public bool Right
         {
-            if (Input.GetKey(KeyCode.W)) { w = true; } else w = false;
-            if (Input.GetKey(KeyCode.A)) { a = true; } else a = false;
-            if (Input.GetKey(KeyCode.S)) { s = true; } else s = false;
-            if (Input.GetKey(KeyCode.D)) { d = true; } else d = false;
-            if (Input.GetKey(KeyCode.Space)) { space = true; } else space = false;
-            if (Input.GetKey(KeyCode.K)) { k = true; } else k = false;
+           get
+           {
+            if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)))
+            {
+                return true;
+            }
+            else return false;
 
+           }
         }
-    }
+    
 }
