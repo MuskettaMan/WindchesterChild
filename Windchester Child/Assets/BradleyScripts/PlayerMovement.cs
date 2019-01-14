@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 1;
+    [SerializeField] private float minSpeed = 3;
+    [SerializeField] private float speed;
+    [SerializeField] private float maxSpeed = 5;
     InputManager inputManager = new InputManager();
+    private Rigidbody2D rigidbody;
+
+    private void Start()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+    }
+
     void Update()
     {
         Movement();
@@ -14,29 +23,59 @@ public class PlayerMovement : MonoBehaviour
     {
         if (inputManager.Up)
         {
-            
-            Vector2 move = transform.position += Vector3.up *speed;
-            GetComponent<Rigidbody2D>().MovePosition(move * Time.deltaTime);
+
+            rigidbody.MovePosition(transform.position + Vector3.up * speed * Time.deltaTime);
 
         }
 
         if (inputManager.Down)
         {
-            Vector2 move = transform.position += Vector3.down * speed;
-            GetComponent<Rigidbody2D>().MovePosition(move * Time.deltaTime);
+            rigidbody.MovePosition(transform.position + Vector3.down * speed * Time.deltaTime);
 
         }
         if (inputManager.Right)
         {
-            Vector2 move = transform.position += Vector3.right * speed;
-            GetComponent<Rigidbody2D>().MovePosition(move * Time.deltaTime);
+            rigidbody.MovePosition(transform.position + Vector3.right * speed * Time.deltaTime);
 
         }
         if (inputManager.Left)
-        {
-            Vector2 move = transform.position += Vector3.left * speed;
-            GetComponent<Rigidbody2D>().MovePosition(move * Time.deltaTime);
+        { 
+            rigidbody.MovePosition(transform.position + Vector3.left * speed * Time.deltaTime);
 
         }
+
+        //diagonals
+        if (inputManager.Up && inputManager.Right)
+        {
+            rigidbody.MovePosition(transform.position + new Vector3(1,1,0) * speed * Time.deltaTime);
+        }
+
+        if (inputManager.Up && inputManager.Left)
+        {
+            rigidbody.MovePosition(transform.position + new Vector3(-1, 1, 0) * speed * Time.deltaTime);
+        }
+
+        if (inputManager.Down && inputManager.Right)
+        {
+            rigidbody.MovePosition(transform.position + new Vector3(1, -1, 0) * speed * Time.deltaTime);
+        }
+
+        if (inputManager.Down && inputManager.Left)
+        {
+            rigidbody.MovePosition(transform.position + new Vector3(-1, -1, 0) * speed * Time.deltaTime);
+        }
+
+
+        //acceleration
+        if (inputManager.Up || inputManager.Down || inputManager.Left|| inputManager.Right)
+        {
+            if (speed < maxSpeed) speed += 0.02f; 
+        }
+        else
+        {
+
+            speed = minSpeed;
+
+        } 
     }
 }
