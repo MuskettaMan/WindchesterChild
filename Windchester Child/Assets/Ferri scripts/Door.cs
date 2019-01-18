@@ -55,7 +55,7 @@ public class Door : MonoBehaviour {
             Vector3 newPos = new Vector3();
             List<GameObject> doors = instance.GetComponent<RoomManager>().Doors;
 
-            Vector3 offset = new Vector3(0.5f, 1, 0);
+            Vector3 offset = new Vector3(1, 1.8f, 0);
 
             switch(dir) {
                 case Direction.Down:
