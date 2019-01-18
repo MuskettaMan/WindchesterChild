@@ -21,24 +21,24 @@ public class PlayerMovement : MonoBehaviour
     }
     void Movement()
     {
-        if (inputManager.Up)
+        if (inputManager.Up && (!inputManager.Left || !inputManager.Right))
         {
 
             rigidbody.MovePosition(transform.position + Vector3.up * speed * Time.deltaTime);
 
         }
 
-        if (inputManager.Down)
+        if (inputManager.Down && (!inputManager.Left || !inputManager.Right))
         {
             rigidbody.MovePosition(transform.position + Vector3.down * speed * Time.deltaTime);
 
         }
-        if (inputManager.Right)
+        if (inputManager.Right && (!inputManager.Up || !inputManager.Down))
         {
             rigidbody.MovePosition(transform.position + Vector3.right * speed * Time.deltaTime);
 
         }
-        if (inputManager.Left)
+        if (inputManager.Left && (!inputManager.Up|| !inputManager.Down))
         { 
             rigidbody.MovePosition(transform.position + Vector3.left * speed * Time.deltaTime);
 

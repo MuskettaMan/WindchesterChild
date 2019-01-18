@@ -478,5 +478,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1200720560492685865, guid: 06afa27277d9f0648a2677d34e3da1dd,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 8cdea95e7ccf4854ba0ce43b768ac3bd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06afa27277d9f0648a2677d34e3da1dd, type: 3}
