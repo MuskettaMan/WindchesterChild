@@ -5,7 +5,10 @@ using UnityEngine;
 public class Door : MonoBehaviour {
 
     private RoomManager roomManager;
-    [SerializeField] private MapManager mapManager;
+    private MapManager mapManager;
+    private Player player;
+
+    private CameraManager cameraManager;
 
     private Vector2 currentPosition;
     private Vector2 nextPosition;
@@ -22,6 +25,7 @@ public class Door : MonoBehaviour {
     }
 
     private void Start() {
+        cameraManager = GameObject.Find("Main Camera").GetComponent<CameraManager>();
         roomManager = transform.parent.GetComponent<RoomManager>();
         mapManager = GameObject.Find("Map Manager").GetComponent<MapManager>();
 
@@ -50,28 +54,34 @@ public class Door : MonoBehaviour {
             if(instance == null) {
                 instance = Instantiate(mapManager.rooms[Random.Range(0, mapManager.rooms.Count)], new Vector3((int)nextPosition.x * mapManager.offset, (int)nextPosition.y * mapManager.offset, 0), Quaternion.identity);
                 mapManager.Grid.GetTile((int)nextPosition.x, (int)nextPosition.y).Instance = instance;
+                
             }
 
             Vector3 newPos = new Vector3();
             List<GameObject> doors = instance.GetComponent<RoomManager>().Doors;
 
-            Vector3 offset = new Vector3(1, 1.8f, 0);
+            Vector3 offset = new Vector3(1.2f, 1.6f, 0);
 
             switch(dir) {
                 case Direction.Down:
                     newPos = doors[2].transform.position + new Vector3(0, offset.y, 0);
+                    cameraManager.pos += new Vector2(0, 1);
                     break;
                 case Direction.Right:
                     newPos = doors[3].transform.position - new Vector3(offset.x, 0, 0);
+                    cameraManager.pos += new Vector2(-1, 0);
                     break;
                 case Direction.Up:
-                    newPos = doors[0].transform.position - new Vector3(0, offset.y + 0.1f, 0);
+                    newPos = doors[0].transform.position - new Vector3(0, offset.y, 0);
+                    cameraManager.pos += new Vector2(0, -1);
                     break;
                 case Direction.Left:
                     newPos = doors[1].transform.position + new Vector3(offset.x, 0, 0);
+                    cameraManager.pos += new Vector2(1, 0);
                     break;
             }
             mapManager.player.transform.position = newPos;
+            //player.currentRoom = mapManager.Grid.GetTile((int)nextPosition.x, (int)nextPosition.y).Instance.GetComponent<RoomManager>();
         }
     }
 

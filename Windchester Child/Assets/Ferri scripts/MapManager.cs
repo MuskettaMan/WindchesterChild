@@ -21,6 +21,7 @@ public class MapManager : MonoBehaviour {
                 if(i == grid.Width / 2 && j == grid.Height / 2) {
                     grid.GetTile(i, j).Instance = Instantiate(rooms[Random.Range(0, rooms.Count)], new Vector3(i * offset, j * offset, 0), Quaternion.identity); // Instantiate starter room in the center of the grid
                     player.transform.position = grid.GetTile(i, j).Instance.transform.position + new Vector3(0, 0, -1); // Set player position in the center of the starting room
+                    player.GetComponent<Player>().currentRoom = grid.GetTile(i, j).Instance.GetComponent<RoomManager>();
                 }
                 
             }
