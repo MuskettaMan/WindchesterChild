@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float minSpeed = 3;
+    [SerializeField] private float minSpeed = 3.5f;
     [SerializeField] private float speed;
-    [SerializeField] private float maxSpeed = 5;
+    [SerializeField] private float maxSpeed = 4;
     InputManager inputManager = new InputManager();
     private new Rigidbody2D rigidbody;
 
