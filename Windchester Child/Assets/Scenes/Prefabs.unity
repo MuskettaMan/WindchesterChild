@@ -863,16 +863,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4601796344631769834, guid: 0c2b71da910f1734c9a867e7930d4985,
-        type: 3}
-      propertyPath: m_Range
-      value: 54.496944
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601796344631769834, guid: 0c2b71da910f1734c9a867e7930d4985,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 14.03
-      objectReference: {fileID: 0}
     - target: {fileID: 8090456196508043011, guid: 0c2b71da910f1734c9a867e7930d4985,
         type: 3}
       propertyPath: m_IsActive
