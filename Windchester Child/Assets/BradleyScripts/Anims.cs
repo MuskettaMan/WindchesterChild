@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Anims : MonoBehaviour
 {
-    InputManager InputManager = new InputManager();
-    Animator anim;
+    private InputManager InputManager = new InputManager();
+    private Animator anim;
+    private Vector3 previouspos;
     // Start is called before the first frame update
     void Start()
     {
+        previouspos = transform.position;
         anim = GetComponent<Animator>();
     }
 
@@ -51,6 +53,50 @@ public class Anims : MonoBehaviour
             anim.SetBool("Facing_Front", false);
         }
 
-        //moves
+        //walk
+        if (InputManager.Up && previouspos == transform.position)
+        {
+            anim.SetBool("Walking_Back", true);
+            anim.SetBool("Walking_Left", false);
+            anim.SetBool("Walking_Front", false);
+            anim.SetBool("Walking_Right", false);
+
+
+        }
+        else if (InputManager.Left && previouspos == transform.position)
+        {
+            anim.SetBool("Walking_Left", true);
+            anim.SetBool("Walking_Back", false);
+            anim.SetBool("Walking_Front", false);
+            anim.SetBool("Walking_Right", false);
+
+
+        }
+        else if (InputManager.Down && previouspos == transform.position)
+        {
+            anim.SetBool("Walking_Front", true);
+            anim.SetBool("Walking_Left", false);
+            anim.SetBool("Walking_Back", false);
+            anim.SetBool("Walking_Right", false);
+
+        }
+        else if (InputManager.Right && previouspos == transform.position)
+        {
+            anim.SetBool("Walking_Right", true);
+            anim.SetBool("Walking_Left", false);
+            anim.SetBool("Walking_Back", false);
+            anim.SetBool("Walking_Front", false);
+
+        }
+        else
+        {
+            anim.SetBool("Walking_Right", false);
+            anim.SetBool("Walking_Left", false);
+            anim.SetBool("Walking_Back", false);
+            anim.SetBool("Walking_Front", false);
+
+        }
+        previouspos = transform.position;
+
     }
 }
