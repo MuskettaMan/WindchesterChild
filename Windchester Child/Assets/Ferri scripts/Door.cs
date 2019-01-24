@@ -6,7 +6,6 @@ public class Door : MonoBehaviour {
 
     private RoomManager roomManager;
     private MapManager mapManager;
-    private Player player;
 
     private CameraManager cameraManager;
 
@@ -29,7 +28,7 @@ public class Door : MonoBehaviour {
         roomManager = transform.parent.GetComponent<RoomManager>();
         mapManager = GameObject.Find("Map Manager").GetComponent<MapManager>();
 
-        dir = (Direction)(transform.eulerAngles.z / 90);
+        dir = (Direction)((transform.eulerAngles.z - roomManager.transform.eulerAngles.z) / 90);
 
         currentPosition = roomManager.transform.position / mapManager.offset;
         if(dir == Direction.Down) {
@@ -52,7 +51,9 @@ public class Door : MonoBehaviour {
         if((nextPosition.x > 0 && nextPosition.x < 15) && (nextPosition.y > 0 && nextPosition.y < 15)) {
             GameObject instance = mapManager.Grid.GetTile((int)nextPosition.x, (int)nextPosition.y).Instance;
             if(instance == null) {
-                instance = Instantiate(mapManager.rooms[Random.Range(0, mapManager.rooms.Count)], new Vector3((int)nextPosition.x * mapManager.offset, (int)nextPosition.y * mapManager.offset, 0), Quaternion.identity);
+                Vector3 position = new Vector3((int)nextPosition.x * mapManager.offset, (int)nextPosition.y * mapManager.offset, 0);
+                Quaternion rotation = Quaternion.identity;
+                instance = Instantiate(mapManager.rooms[Random.Range(0, mapManager.rooms.Count)], position, rotation);
                 mapManager.Grid.GetTile((int)nextPosition.x, (int)nextPosition.y).Instance = instance;
                 
             }
@@ -81,7 +82,6 @@ public class Door : MonoBehaviour {
                     break;
             }
             mapManager.player.transform.position = newPos;
-            //player.currentRoom = mapManager.Grid.GetTile((int)nextPosition.x, (int)nextPosition.y).Instance.GetComponent<RoomManager>();
         }
     }
 
