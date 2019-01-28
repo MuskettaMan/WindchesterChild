@@ -2,103 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Anims : MonoBehaviour
-{
-    private InputManager InputManager = new InputManager();
-    private Animator anim;
-    private Vector3 previouspos;
-    // Start is called before the first frame update
-    void Start()
-    {
-        previouspos = transform.position;
-        anim = GetComponent<Animator>();
+public class Anims : MonoBehaviour {
+
+    public enum AnimState {
+        IdleFront,
+        IdleBack,
+        IdleLeft,
+        IdleRight,
+        WalkFront,
+        WalkBack,
+        WalkLeft,
+        WalkRight
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Animations();
+    private Animator animator;
+
+    private void Start() {
+        animator = GetComponent<Animator>();
     }
 
-    public void Animations()
-    {
-        //idles
-        if (InputManager.Up)
-        {
-            anim.SetBool("Facing_Back", true);
-            anim.SetBool("Facing_Left", false);
-            anim.SetBool("Facing_Right", false);
-            anim.SetBool("Facing_Front", false);
-        }
-        if (InputManager.Left)
-        {
-            anim.SetBool("Facing_Left", true);
-            anim.SetBool("Facing_Back", false);
-            anim.SetBool("Facing_Right", false);
-            anim.SetBool("Facing_Front", false);
-        }
-        if (InputManager.Down)
-        {
-            anim.SetBool("Facing_Front", true);
-            anim.SetBool("Facing_Back", false);
-            anim.SetBool("Facing_Left", false);
-            anim.SetBool("Facing_Right", false);
-            
+    private void Update() {
 
-
-        }
-        if (InputManager.Right)
-        {
-            anim.SetBool("Facing_Right", true);
-            anim.SetBool("Facing_Back", false);
-            anim.SetBool("Facing_Left", false);
-            anim.SetBool("Facing_Front", false);
-            
-
+        if(Input.GetKey(KeyCode.W)) {
+            ChangeAnimationState(AnimState.WalkFront);
+        } else if(Input.GetKey(KeyCode.S)) {
+            ChangeAnimationState(AnimState.WalkBack);
+        } else if(Input.GetKey(KeyCode.A)) {
+            ChangeAnimationState(AnimState.WalkLeft);
+        } else if(Input.GetKey(KeyCode.D)) {
+            ChangeAnimationState(AnimState.WalkRight);
         }
 
-        //walk
-        if (InputManager.Up && previouspos == transform.position)
-        {
-            anim.SetBool("Walking_Back", true);
-            anim.SetBool("Walking_Left", false);
-            anim.SetBool("Walking_Front", false);
-            anim.SetBool("Walking_Right", false);
-
-
+        if(Input.GetKeyUp(KeyCode.W)) {
+            ChangeAnimationState(AnimState.IdleFront);
+        } else if(Input.GetKeyUp(KeyCode.S)) {
+            ChangeAnimationState(AnimState.IdleBack);
+        } else if(Input.GetKeyUp(KeyCode.A)) {
+            ChangeAnimationState(AnimState.IdleLeft);
+        } else if(Input.GetKeyUp(KeyCode.D)) {
+            ChangeAnimationState(AnimState.IdleRight);
         }
-        else if (InputManager.Left && previouspos == transform.position)
-        {
-            anim.SetBool("Walking_Left", true);
-            anim.SetBool("Walking_Back", false);
-            anim.SetBool("Walking_Front", false);
-            anim.SetBool("Walking_Right", false);
-
-        }
-        else if (InputManager.Down && previouspos == transform.position)
-        {
-            anim.SetBool("Walking_Front", true);
-            anim.SetBool("Walking_Left", false);
-            anim.SetBool("Walking_Back", false);
-            anim.SetBool("Walking_Right", false);
-
-        }
-        else if (InputManager.Right && previouspos == transform.position)
-        {
-            anim.SetBool("Walking_Right", true);
-            anim.SetBool("Walking_Left", false);
-            anim.SetBool("Walking_Back", false);
-            anim.SetBool("Walking_Front", false);
-        }
-        else
-        {
-            anim.SetBool("Walking_Right", false);
-            anim.SetBool("Walking_Left", false);
-            anim.SetBool("Walking_Back", false);
-            anim.SetBool("Walking_Front", false);
-
-        }
-        previouspos = transform.position;
 
     }
+
+    private void ChangeAnimationState(AnimState state) {
+        animator.SetInteger("AnimState", (int)state);
+    }
+
 }
