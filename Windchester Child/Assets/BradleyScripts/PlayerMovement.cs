@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         //cancel opposing forces
         if ((inputManager.Up && inputManager.Down) || (inputManager.Left && inputManager.Right))
         {
-            rigidbody.MovePosition(transform.position + Vector3.zero * speed * Time.deltaTime);
+            rigidbody.MovePosition(transform.position + Vector3.zero * currentSpeed * Time.deltaTime);
         }
 
         //acceleration
