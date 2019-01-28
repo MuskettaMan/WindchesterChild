@@ -43,6 +43,8 @@ public class Anims : MonoBehaviour
             anim.SetBool("Facing_Back", false);
             anim.SetBool("Facing_Left", false);
             anim.SetBool("Facing_Right", false);
+            
+
 
         }
         if (InputManager.Right)
@@ -51,6 +53,8 @@ public class Anims : MonoBehaviour
             anim.SetBool("Facing_Back", false);
             anim.SetBool("Facing_Left", false);
             anim.SetBool("Facing_Front", false);
+            
+
         }
 
         //walk
@@ -70,7 +74,6 @@ public class Anims : MonoBehaviour
             anim.SetBool("Walking_Front", false);
             anim.SetBool("Walking_Right", false);
 
-
         }
         else if (InputManager.Down && previouspos == transform.position)
         {
@@ -86,7 +89,6 @@ public class Anims : MonoBehaviour
             anim.SetBool("Walking_Left", false);
             anim.SetBool("Walking_Back", false);
             anim.SetBool("Walking_Front", false);
-
         }
         else
         {
