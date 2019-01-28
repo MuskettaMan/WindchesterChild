@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speedIncrease;
     [SerializeField] private float maxSpeed = 5;
     InputManager inputManager = new InputManager();
-    private Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
 
     private void Start()
     {
@@ -34,16 +34,19 @@ public class PlayerMovement : MonoBehaviour
             rigidbody.MovePosition(transform.position + Vector3.down * currentSpeed * Time.deltaTime);
 
         }
+
+
         if (inputManager.Right && (!inputManager.Up || !inputManager.Down))
         {
             rigidbody.MovePosition(transform.position + Vector3.right * currentSpeed * Time.deltaTime);
 
         }
         if (inputManager.Left && (!inputManager.Up|| !inputManager.Down))
-        { 
+        {
             rigidbody.MovePosition(transform.position + Vector3.left * currentSpeed * Time.deltaTime);
 
         }
+
 
         //diagonals
         if (inputManager.Up && inputManager.Right)
@@ -67,16 +70,22 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+        //cancel opposing forces
+        if ((inputManager.Up && inputManager.Down) || (inputManager.Left && inputManager.Right))
+        {
+            rigidbody.MovePosition(transform.position + Vector3.zero * speed * Time.deltaTime);
+        }
+
         //acceleration
         if (inputManager.Up || inputManager.Down || inputManager.Left|| inputManager.Right)
         {
-            if (currentSpeed < maxSpeed) currentSpeed += speedIncrease; 
+            if (currentSpeed < maxSpeed) currentSpeed += speedIncrease;
         }
         else
         {
 
             currentSpeed = minSpeed;
 
-        } 
+        }
     }
 }
