@@ -15,33 +15,62 @@ public class Anims : MonoBehaviour {
         WalkRight
     }
 
+    public enum Facing {
+        Front,
+        Back,
+        Left,
+        Right
+    }
+
     private Animator animator;
+    private Rigidbody2D rb2d;
+
+    private Facing faceDirection;
 
     private void Start() {
         animator = GetComponent<Animator>();
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     private void Update() {
 
-        if(Input.GetKey(KeyCode.W)) {
+        if(rb2d.velocity.y < 0) {
             ChangeAnimationState(AnimState.WalkFront);
-        } else if(Input.GetKey(KeyCode.S)) {
+            faceDirection = Facing.Front;
+        } else if(rb2d.velocity.y > 0) {
             ChangeAnimationState(AnimState.WalkBack);
-        } else if(Input.GetKey(KeyCode.A)) {
+            faceDirection = Facing.Back;
+        } else if(rb2d.velocity.x < 0) {
             ChangeAnimationState(AnimState.WalkLeft);
-        } else if(Input.GetKey(KeyCode.D)) {
+            faceDirection = Facing.Left;
+        } else if(rb2d.velocity.x > 0) {
             ChangeAnimationState(AnimState.WalkRight);
+            faceDirection = Facing.Right;
         }
 
-        if(Input.GetKeyUp(KeyCode.W)) {
-            ChangeAnimationState(AnimState.IdleFront);
-        } else if(Input.GetKeyUp(KeyCode.S)) {
-            ChangeAnimationState(AnimState.IdleBack);
-        } else if(Input.GetKeyUp(KeyCode.A)) {
-            ChangeAnimationState(AnimState.IdleLeft);
-        } else if(Input.GetKeyUp(KeyCode.D)) {
-            ChangeAnimationState(AnimState.IdleRight);
-        }
+        if(rb2d.velocity == Vector2.zero) {
+            switch(faceDirection) {
+                case Facing.Front:
+                ChangeAnimationState(AnimState.IdleFront);
+                break;
+
+                case Facing.Back:
+                ChangeAnimationState(AnimState.IdleBack);
+                break;
+
+                case Facing.Left:
+                ChangeAnimationState(AnimState.IdleLeft);
+                break;
+
+                case Facing.Right:
+                ChangeAnimationState(AnimState.IdleRight);
+                break;
+
+                default:
+                ChangeAnimationState(AnimState.IdleFront);
+                break;
+            }
+        }       
 
     }
 
