@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class PlayerMovementNew : MonoBehaviour {
 
-    public float speed = 5;
+    public float speed {
+        get {
+            return _speed;
+        }
+        set {
+            _speed = value;
+        }
+    }
+
+    private float _speed;
 
     private Rigidbody2D rb2d;
 
@@ -15,7 +24,7 @@ public class PlayerMovementNew : MonoBehaviour {
     private void Update() {
         Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        rb2d.velocity = move * speed * Time.deltaTime;
+        rb2d.velocity = move * _speed * Time.deltaTime;
     }
 
 }
