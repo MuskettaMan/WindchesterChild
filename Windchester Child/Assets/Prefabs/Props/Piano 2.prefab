@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4985785937136586536}
   - component: {fileID: 4985785937136586539}
+  - component: {fileID: 2837923518390538197}
   m_Layer: 0
   m_Name: Piano 2
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4985785937136586538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.704481, y: -1.2450125, z: -3.331437}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.69948715, y: 0.69948715, z: 0.69948715}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -79,3 +80,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &2837923518390538197
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4985785937136586538}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 1.17, y: 1.1752908}
+  - {x: 1.2766635, y: 0.94446766}
+  - {x: 1.2334502, y: 0.6245765}
+  - {x: 1.154703, y: 0.3193918}
+  - {x: 1.0323527, y: -0.077218615}
+  - {x: 0.68095094, y: -0.76882714}
+  - {x: 0.46106672, y: -1.0289412}
+  - {x: 0.29568905, y: -1.081302}
+  - {x: 0.14852029, y: -0.9133024}
+  - {x: -0.047099598, y: -1.4716681}
+  - {x: -1.1155853, y: -1.0703635}
+  - {x: -1.0561583, y: -0.69498765}
+  - {x: -1.1030422, y: -0.5210509}
+  - {x: -1.2974406, y: -0.4395581}
+  - {x: -1.3354205, y: -0.15523204}
+  - {x: -1.3313485, y: 0.06442865}
+  - {x: -1.1890419, y: 0.53951}
+  - {x: -1.0397252, y: 0.86913645}
+  - {x: -0.8294819, y: 1.0776381}
+  - {x: -0.586571, y: 1.0679779}
+  - {x: -0.11116082, y: 1.1412504}
+  - {x: 0.49104148, y: 1.4555005}
+  - {x: 0.9307674, y: 1.4241052}
+  - {x: 1.17, y: 1.175291}
