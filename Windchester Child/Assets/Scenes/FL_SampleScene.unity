@@ -416,6 +416,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1200720560492685866, guid: 06afa27277d9f0648a2677d34e3da1dd,
         type: 3}
       propertyPath: m_Name
@@ -513,10 +517,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 2.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1084190896, guid: 06afa27277d9f0648a2677d34e3da1dd, type: 3}
       propertyPath: m_Controller
