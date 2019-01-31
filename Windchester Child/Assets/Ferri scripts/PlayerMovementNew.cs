@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovementNew : MonoBehaviour {
 
-    public float speed {
+    public float Speed {
         get {
             return _speed;
         }
@@ -19,6 +19,7 @@ public class PlayerMovementNew : MonoBehaviour {
 
     private void Start() {
         rb2d = GetComponent<Rigidbody2D>();
+        Speed = 200;
     }
 
     private void Update() {

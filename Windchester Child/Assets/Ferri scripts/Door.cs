@@ -41,6 +41,12 @@ public class Door : MonoBehaviour {
             nextPosition = new Vector2(currentPosition.x + 1, currentPosition.y);
         }
 
+        if((nextPosition.x > 0 && nextPosition.x < 15) && (nextPosition.y > 0 && nextPosition.y < 15)) {
+            
+        } else {
+            gameObject.SetActive(false);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -55,7 +61,7 @@ public class Door : MonoBehaviour {
                 Quaternion rotation = Quaternion.identity;
                 instance = Instantiate(mapManager.rooms[Random.Range(0, mapManager.rooms.Count)], position, rotation);
                 mapManager.Grid.GetTile((int)nextPosition.x, (int)nextPosition.y).Instance = instance;
-                
+
             }
 
             Vector3 newPos = new Vector3();
@@ -65,21 +71,21 @@ public class Door : MonoBehaviour {
 
             switch(dir) {
                 case Direction.Down:
-                    newPos = doors[2].transform.position + new Vector3(0, offset.y, 0);
-                    cameraManager.pos += new Vector2(0, 1);
-                    break;
+                newPos = doors[2].transform.position + new Vector3(0, offset.y, 0);
+                cameraManager.pos += new Vector2(0, 1);
+                break;
                 case Direction.Right:
-                    newPos = doors[3].transform.position - new Vector3(offset.x, 0, 0);
-                    cameraManager.pos += new Vector2(-1, 0);
-                    break;
+                newPos = doors[3].transform.position - new Vector3(offset.x, 0, 0);
+                cameraManager.pos += new Vector2(-1, 0);
+                break;
                 case Direction.Up:
-                    newPos = doors[0].transform.position - new Vector3(0, offset.y, 0);
-                    cameraManager.pos += new Vector2(0, -1);
-                    break;
+                newPos = doors[0].transform.position - new Vector3(0, offset.y, 0);
+                cameraManager.pos += new Vector2(0, -1);
+                break;
                 case Direction.Left:
-                    newPos = doors[1].transform.position + new Vector3(offset.x, 0, 0);
-                    cameraManager.pos += new Vector2(1, 0);
-                    break;
+                newPos = doors[1].transform.position + new Vector3(offset.x, 0, 0);
+                cameraManager.pos += new Vector2(1, 0);
+                break;
             }
             mapManager.player.transform.position = newPos;
         }
