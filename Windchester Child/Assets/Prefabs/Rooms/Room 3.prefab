@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 279916309701380095}
   - component: {fileID: 8947054885726297871}
   - component: {fileID: 5991479388327809114}
+  - component: {fileID: 2951475067633866224}
   m_Layer: 0
   m_Name: Room 3
   m_TagString: Untagged
@@ -128,6 +129,25 @@ MonoBehaviour:
   - {fileID: 5796055340776580234}
   - {fileID: 2027521805562660394}
   - {fileID: 5323979457729600743}
+--- !u!114 &2951475067633866224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213727251038740653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdda73c285529e8478c5637fc29cfea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layouts:
+  - {fileID: 6899479518054251347, guid: 4936e4b3b56d98e418428ad039f7a164, type: 3}
+  - {fileID: 3478182008720598479, guid: 3208bd40ad54a7446af0df9cc7478279, type: 3}
+  - {fileID: 4608265793767938741, guid: 13f64c580f03da948a27f7c23a18d516, type: 3}
+  - {fileID: 5619304203229067786, guid: e1f10ea19f28dfb4784c9f130166648c, type: 3}
+  - {fileID: 3462749633283201513, guid: 6267746dfb5677d478f0c8211ac616b5, type: 3}
+  - {fileID: 4468756235071851201, guid: 83109c2e63f5aa741a4c6bac2dcbd3bc, type: 3}
 --- !u!1 &2027521805562660394
 GameObject:
   m_ObjectHideFlags: 0

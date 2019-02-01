@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 6590188737449108330}
   - component: {fileID: 1209361586237439937}
   - component: {fileID: 1548165243436765172}
+  - component: {fileID: 8812729689464778573}
   m_Layer: 0
   m_Name: Room 1
   m_TagString: Untagged
@@ -367,6 +368,25 @@ MonoBehaviour:
   - {fileID: 8415999941362707544}
   - {fileID: 4812140169704950936}
   - {fileID: 8918415391743773677}
+--- !u!114 &8812729689464778573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5621568227411576519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdda73c285529e8478c5637fc29cfea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layouts:
+  - {fileID: 6899479518054251347, guid: 4936e4b3b56d98e418428ad039f7a164, type: 3}
+  - {fileID: 3478182008720598479, guid: 3208bd40ad54a7446af0df9cc7478279, type: 3}
+  - {fileID: 4608265793767938741, guid: 13f64c580f03da948a27f7c23a18d516, type: 3}
+  - {fileID: 5619304203229067786, guid: e1f10ea19f28dfb4784c9f130166648c, type: 3}
+  - {fileID: 3462749633283201513, guid: 6267746dfb5677d478f0c8211ac616b5, type: 3}
+  - {fileID: 4468756235071851201, guid: 83109c2e63f5aa741a4c6bac2dcbd3bc, type: 3}
 --- !u!1 &8415999941362707544
 GameObject:
   m_ObjectHideFlags: 0

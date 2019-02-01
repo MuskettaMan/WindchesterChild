@@ -13,13 +13,13 @@ public class PlayerMovementNew : MonoBehaviour {
         }
     }
 
-    private float _speed;
+    [SerializeField] private float _speed;
 
     private Rigidbody2D rb2d;
 
     private void Start() {
         rb2d = GetComponent<Rigidbody2D>();
-        Speed = 200;
+        Speed = _speed;
     }
 
     private void Update() {
